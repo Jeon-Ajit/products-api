@@ -1,0 +1,13 @@
++---------------------------+
+|          Product          |
++---------------------------+
+| - id : long               |
+| - name : String           |
+| - price : double          |
++---------------------------+
+| + Product()               |
+| + Product(long,String,double) |
+| + getId() : long          |
+| + getName() : String      |
+| + getPrice() : double     |
++---------------------------+
