@@ -1,0 +1,14 @@
++----------------------+        +----------------------+
+|       Customer       |------->|       Address        |
++----------------------+        +----------------------+
+| - id : Long          |        | - street : String    |
+| - name : String      |        | - city : String      |
+| - email : String     |        | - postcode : String  |
+| - address : Address  |        +----------------------+
++----------------------+        | + Address()          |
+| + Customer()         |        | + getStreet()       |
+| + getId()            |        | + getCity()         |
+| + getName()          |        | + getPostcode()     |
+| + getEmail()         |        +----------------------+
+| + getAddress()       |
++----------------------+
