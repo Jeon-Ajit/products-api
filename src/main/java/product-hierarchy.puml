@@ -1,0 +1,35 @@
+@startuml
+
+class Product {
+  - id : Long
+  - name : String
+  - price : double
+
+  + getId() : Long
+  + setId(id : Long)
+  + getName() : String
+  + setName(name : String)
+  + getPrice() : double
+  + setPrice(price : double)
+}
+
+class DigitalProduct {
+  - downloadUrl : String
+  - fileSizeMB : double
+
+  + getDownloadUrl() : String
+  + getFileSizeMB() : double
+}
+
+class PhysicalProduct {
+  - weightKg : double
+  - dimensions : String
+
+  + getWeightKg() : double
+  + getDimensions() : String
+}
+
+DigitalProduct --|> Product
+PhysicalProduct --|> Product
+
+@enduml

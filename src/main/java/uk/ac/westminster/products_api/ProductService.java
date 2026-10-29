@@ -1,39 +1,64 @@
 package uk.ac.westminster.products_api;
 
 import org.springframework.stereotype.Service;
-import uk.ac.westminster.products_api.Product;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ProductService{
-    private final List<Product> products= new ArrayList<>();
-    private Long nextId=1L;
+public class ProductService {
 
-    public List<Product> getAllProducts(){
+    private final List<Product> products = new ArrayList<>();
+    private Long nextId = 1L;
+
+    public ProductService() {
+
+        products.add(
+                new DigitalProduct(
+                        nextId++,
+                        "Java E-Book",
+                        19.99,
+                        "/downloads/java.pdf",
+                        5.2
+                )
+        );
+
+        products.add(
+                new PhysicalProduct(
+                        nextId++,
+                        "Gaming Mouse",
+                        39.99,
+                        0.3,
+                        "12cm x 6cm x 4cm"
+                )
+        );
+    }
+
+    public List<Product> getAllProducts() {
         return products;
     }
-    public Product addProduct(Product product){
+
+    public Product addProduct(Product product) {
         product.setId(nextId++);
         products.add(product);
         return product;
     }
-    public Optional<Product> getProductById(Long id){
+
+    public Optional<Product> getProductById(Long id) {
         return products.stream()
-                .filter(p -> p.getId() == id)
+                .filter(p -> p.getId().equals(id))
                 .findFirst();
     }
-    public void deleteProduct(Long id){
 
-        products.removeIf(p -> p.getId() == id);
+    public void deleteProduct(Long id) {
+        products.removeIf(p -> p.getId().equals(id));
     }
-    public List<Product> findByName(String name){
+
+    public List<Product> findByName(String name) {
         return products.stream()
-                .filter(p-> p.getName().contains(name))
+                .filter(p -> p.getName().contains(name))
                 .toList();
     }
-
-
 }
+
